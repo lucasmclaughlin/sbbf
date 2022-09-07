@@ -1,30 +1,31 @@
-Keys = { 'w', 'a', 's', 'd', 'h', 'j', 'k', 'l' }
-KeyTimerMax = .7
-KeyTimer = KeyTimerMax
-KeyList = {}
+Combo = {}
+Combo.keys = { 'w', 'a', 's', 'd', 'h', 'j', 'k', 'l' }
+Combo.keyTimerMax = .7
+Combo.KeyTimer = Combo.keyTimerMax
+Combo.keyList = {}
 
 
-function comboKeys(key)
-    for i, input in ipairs(Keys) do
+function Combo.comboKeys(key)
+    for i, input in ipairs(Combo.keys) do
         if key == input then
-            table.insert(KeyList, #KeyList + 1, input)
+            table.insert(Combo.keyList, #Combo.keyList + 1, input)
         end
-        if KeyList[i] == KeyList[i - 1] then
-            table.remove(KeyList, i)
+        if Combo.keyList[i] == Combo.keyList[i - 1] then
+            table.remove(Combo.keyList, i)
         end
     end
 end
 
-function updateCombo(dt)
-    KeyTimer = KeyTimer - dt
-    if KeyTimer < 0 then
-        table.remove(KeyList, 1)
-        KeyTimer = KeyTimerMax
+function Combo.update(dt)
+    Combo.KeyTimer = Combo.KeyTimer - dt
+    if Combo.KeyTimer < 0 then
+        table.remove(Combo.keyList, 1)
+        Combo.KeyTimer = Combo.keyTimerMax
     end
 end
 
-function printCombo(dt)
-    for i, key in ipairs(KeyList) do
-        love.graphics.print(KeyList, love.graphics.getWidth() / 2 - 100, love.graphics.getHeight() / 2)
+function Combo.print(dt)
+    for i, key in ipairs(Combo.keyList) do
+        love.graphics.print(Combo.keyList, love.graphics.getWidth() / 2 - 100, love.graphics.getHeight() / 2)
     end
 end

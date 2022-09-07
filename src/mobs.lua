@@ -1,7 +1,7 @@
-MobImg = nil
 Mobs = {}
+MobImg = nil
 
-function updateMobs(dt)
+function Mobs.update(dt)
     -- move mobs and delete off screen mobs
     for i, mob in ipairs(Mobs) do
         mob.y = mob.y + (200 * dt)
@@ -12,10 +12,10 @@ function updateMobs(dt)
 
     -- remove mobs hit by attacks
     for i, mob in ipairs(Mobs) do
-        for j, attackBox in ipairs(AttackBoxes) do
+        for j, attackBox in ipairs(Player.attackBoxes) do
             if CheckCollision(mob.x, mob.y, mob.img:getWidth(), mob.img:getHeight(), attackBox.x, attackBox.y,
                 attackBox.img:getWidth(), attackBox.img:getHeight()) then
-                table.remove(AttackBoxes, j)
+                table.remove(Player.attackBoxes, j)
                 table.remove(Mobs, i)
                 Score = Score + 1
             end
@@ -31,7 +31,7 @@ function updateMobs(dt)
     end
 end
 
-function drawMobs(dt)
+function Mobs.draw(dt)
     for i, mob in ipairs(Mobs) do
         love.graphics.draw(mob.img, mob.x, mob.y)
     end

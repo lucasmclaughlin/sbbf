@@ -10,27 +10,27 @@ function love.keypressed(key, scancode, isrepeat)
         love.event.quit()
     end
 
-    comboKeys(key)
+    Combo.comboKeys(key)
 end
 
 function love.update(dt)
-    updateCombo(dt)
+    Combo.update(dt)
     Level.update(dt)
-    updateMobs(dt)
-    updatePlayer(dt)
+    Mobs.update(dt)
+    Player.update(dt)
 end
 
 function love.draw(dt)
-    drawMobs(dt)
-    drawPlayer(dt)
+    Mobs.draw(dt)
+    Player.draw(dt)
 
     -- where do bullets go. Are they player.bullet?
-    for i, bullet in ipairs(AttackBoxes) do
+    for i, bullet in ipairs(Player.attackBoxes) do
         love.graphics.draw(bullet.img, bullet.x, bullet.y)
     end
 
     if debug then
         love.graphics.print("Keys: WASD + HJKL", 150, love.graphics.getHeight() / 2)
-        printCombo(dt)
+        Combo.print(dt)
     end
 end

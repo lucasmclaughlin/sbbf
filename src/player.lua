@@ -1,7 +1,7 @@
 Player = { x = 200, y = 710, speed = 400, img = nil, isAlive = true, score = 0 }
-AttackBoxes = {}
+Player.attackBoxes = {}
 
-function updatePlayer(dt)
+function Player.update(dt)
     -- Player movement
     if love.keyboard.isDown('left', 'a') then
         if Player.x > 0 then
@@ -13,7 +13,7 @@ function updatePlayer(dt)
         end
     end
 end
-function drawPlayer(dt)
+function Player.draw(dt)
     if Player.isAlive then
         love.graphics.draw(Player.img, Player.x, Player.y)
     else

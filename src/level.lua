@@ -16,7 +16,7 @@ function Level.update(dt)
         local i = 1
         while (i < Level.map[Level.stage]) do
             local randomNumber = math.random(10, love.graphics.getWidth() - 10)
-            local newMob = { x = randomNumber, y = -10, img = MobImg }
+            local newMob = { x = randomNumber, y = -10, img = Mobs.mobImg }
             table.insert(Mobs, newMob)
             i = i + 1
         end
