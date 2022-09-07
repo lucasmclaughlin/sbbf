@@ -15,7 +15,7 @@ end
 
 function love.update(dt)
     updateCombo(dt)
-    updateLevel(dt)
+    Level.update(dt)
     updateMobs(dt)
     updatePlayer(dt)
 end

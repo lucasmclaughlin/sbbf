@@ -20,7 +20,7 @@ function updateMobs(dt)
                 Score = Score + 1
             end
         end
-        
+
         -- check for mobs hitting player
         if CheckCollision(mob.x, mob.y, mob.img:getWidth(), mob.img:getHeight(), Player.x, Player.y,
             Player.img:getWidth(), Player.img:getHeight())
@@ -30,6 +30,7 @@ function updateMobs(dt)
         end
     end
 end
+
 function drawMobs(dt)
     for i, mob in ipairs(Mobs) do
         love.graphics.draw(mob.img, mob.x, mob.y)
