@@ -11,6 +11,7 @@ function love.keypressed(key, scancode, isrepeat)
     end
 
     Combo.comboKeys(key)
+    Combo.checkCombo(key, {a, d, h})
 end
 
 function love.update(dt)

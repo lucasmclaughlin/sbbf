@@ -16,6 +16,18 @@ function Combo.comboKeys(key)
     end
 end
 
+function Combo.checkCombo(key, keyInCombo)
+    keyEntry = {}
+    for i, keyInCombo in ipairs(Combo.keyList) do
+        if key == keyInCombo then
+            table.insert(keyEntry, #keyEntry + 1, keyInCombo)
+            if #keyEntry >= #keyInCombo then
+                love.graphics.print(Combo, Player.x, Player.y - 50)
+            end
+        end
+    end
+end
+
 function Combo.update(dt)
     Combo.KeyTimer = Combo.KeyTimer - dt
     if Combo.KeyTimer < 0 then
